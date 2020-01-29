@@ -100,7 +100,7 @@ void Calendar::PrintDate(int ndays)
 							cout << "06//" << ndays - 151 - adder << "//" << year << endl;
 						else
 							if (ndays <= 212 + adder)
-								cout<< "07//" << ndays - 181 - adder << "//" << year << endl;
+								cout << "07//" << ndays - 181 - adder << "//" << year << endl;
 							else
 								if (ndays <= 242 + adder)
 									cout << "08//" << ndays - 212 - adder << "//" << year << endl;
@@ -110,18 +110,23 @@ void Calendar::PrintDate(int ndays)
 									else
 										if (ndays <= 304 + adder)
 											cout << "10//" << ndays - 273 - adder << "//" << year << endl;
-										else 
+										else
 											if (ndays <= 334 + adder)
 												cout << "11//" << ndays - 304 - adder << "//" << year << endl;
 											else
 												if (ndays <= 365 + adder)
 													cout << "12//" << ndays - 334 - adder << "//" << year << endl;
-}						
-//int main()
-//{
-//	Calendar c(2020, true);
-//	cout << "Is it a leap year? " << c.Leapyear() << endl;
-//	cout << "2.29 numdays is " << c.NumDays(2, 29) << endl;
-//	c.PrintDate(77);
-//	system("pause");
-//}
+}
+int DateInterval(Calendar A, Calendar B)
+{
+	int A_numdays = A.NumDays(3, 12);
+	int B_numdays = B.NumDays(4, 12);
+	return B_numdays - A_numdays;
+}
+int main(void)
+{
+	Calendar A(2020, true);
+	Calendar B(2020, true);
+	cout << DateInterval(A, B);
+	system("pause");
+}
