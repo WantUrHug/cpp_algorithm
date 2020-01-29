@@ -25,43 +25,55 @@ public:
 	//梅花在0-12， 方块在13-25，红心在26-38，黑桃在39-51。每个花色中
 	//第一张为A，最后三张为J、Q、K.，将牌C输出为“花色 牌值”
 	void PrintCard(int c);
+	//展示打印牌组
+	void ShowCards(void);
 };
 CardDeck::CardDeck(void)
 {
 	int length = sizeof(cards) / sizeof(cards[0]);
-	cout << length << endl;;
+	//cout << length << endl;;
 	for (int i = 0; i < length; i++)
 		cards[i] = i;
+	currentCrd = 0;
 	Shuffle();
 }
 void CardDeck::Shuffle(void)
 {
 	int length = sizeof(cards) / sizeof(cards[0]);
-	cout << length << endl;;
+	//cout << length << endl;;
 	for (int j = 0; j < length; j++)
 	{
 		int randnumber = ToolRandInt(j, length - 1);
 		//交换两张牌
-		cards[j] = randnumber;
-		cards[randnumber] = j;
+		int tmp = cards[j];
+		cards[j] = cards[randnumber];
+		cards[randnumber] = tmp;
 	}
 }
 int CardDeck::GetCard(void)
-{
-
+{	
+	if (currentCrd <= 51)
+		currentCrd += 1;
+	else
+	{
+		cout << "卡组已经抽完了." << endl;
+		return -1;
+	}
+	int result = cards[currentCrd - 1];
+	return result;
 }
 void CardDeck::PrintCard(int c)
 {
-	if (0 <= c & c < 13)
+	if (0 <= c && c < 13)
 		cout << "梅花 ";
 	else
-		if (13 <= c & c < 26)
+		if (13 <= c && c < 26)
 			cout << "方块 ";
 		else
-			if (26 <= c & c < 39)
+			if (26 <= c && c < 39)
 				cout << "红心 ";
 			else 
-				if (39 <= c & c < 52)
+				if (39 <= c && c < 52)
 					cout << "黑桃";
 				else
 					cout << "编号范围应该在0-51之间." << endl;
@@ -97,9 +109,25 @@ void CardDeck::PrintCard(int c)
 	}
 	cout << endl;
 }
-int main()
-{
-	CardDeck cd;
-	//cout << cd.cards[0] << endl;
-	system("pause");
+void CardDeck::ShowCards(void) {
+	int length = sizeof(cards) / sizeof(cards[0]);
+	for (int i = 0; i < length ; i++)
+	{
+		if (cards[i] >= 0)
+		{
+			cout << cards[i] << ", ";
+		}
+	}
+	cout << endl;
 }
+
+//int main()
+//{
+//	CardDeck cd;
+//	cd.ShowCards();
+//	cd.Shuffle();
+//	cd.ShowCards();
+//	cout << cd.GetCard() << endl;
+//	cout << cd.GetCard() << endl;
+//	system("pause");
+//}

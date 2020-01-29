@@ -18,8 +18,10 @@ Box::Box(float a1, float b1, float c1) {
 	c = c1;
 }
 float* Box::getLines(void) {
-	float lines[3];
-	lines[0], lines[1], lines[2] = a, b, c;
+	static float lines[3];
+	lines[0] = a;
+	lines[1] = b;
+	lines[2] = c;
 	return lines;
 }
 float Box::CalArea(void) {
@@ -44,10 +46,10 @@ bool PostDescriber(Box box)
 	else
 		return false;
 }
-int main(void) {
-	Box box(25, 25, 25);
-	cout << "Area of our box is " << box.CalArea() << endl;
-	cout << "Volume of out box is " << box.CalVolume() << endl;
-	cout << PostDescriber(box) << endl;
-	system("pause");
-}
+//int main(void) {
+//	Box box(25, 25, 25);
+//	cout << "Area of our box is " << box.CalArea() << endl;
+//	cout << "Volume of out box is " << box.CalVolume() << endl;
+//	cout << PostDescriber(box) << endl;
+//	system("pause");
+//}
