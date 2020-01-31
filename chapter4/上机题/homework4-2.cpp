@@ -1,6 +1,6 @@
 struct Person
 {
-	char name[20];
+	const char* name;
 	int age;
 	const char* gender;
 };
@@ -28,13 +28,22 @@ void PrintByGender(const SeqList &L, const char* sex)
 		}
 	}
 }
+int Inlist(const SeqList& L, const char *nm, Person &p)
+{
+	p.name = nm;
+	int r = L.Find(p);
+	return r;
+}
 int main() 
 {
 	DataType a = { "jack", 20, "male" };
 	DataType b = { "mary", 22, "female" };
 	DataType c = { "tom", 30, "male" };
+	//cout << a.name << endl;
 	SeqList L;
 	L.Insert(a); L.Insert(b); L.Insert(c);
 	PrintByGender(L, "female");
+	Person d;
+	cout << Inlist(L, "jack", d) << endl;;
 	system("pause");
 }

@@ -80,10 +80,13 @@ DataType SeqList::GetData(int pos) const
 int SeqList::Find(DataType& item) const
 {
 	int i = 0;
-	if (ListEmpty())
-		//表为空返回0
+	//表为空返回0
+	if (ListEmpty() == 0)	
+	{
+		cout << "It's empty!" << endl;
 		return 0;
-	while (i < size && !(listitem[i] == item))
+	}
+		while (i < size && !(listitem[i] == item))
 		i++;
 	if (i < size)
 	{
@@ -91,6 +94,7 @@ int SeqList::Find(DataType& item) const
 		return 1;
 	}
 	else
+		cout << "xxx" << endl;
 		return 0;
 }
 DataType SeqList::DeleteFront(void)
