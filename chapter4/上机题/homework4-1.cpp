@@ -15,20 +15,20 @@ void InserteMax(SeqList &L, int elt)
 	}
 	L.Insert(elt);
 }
-//int main(void) {
-//	SeqList L;
-//	L.Insert(10);
-//	L.Insert(20);
-//	L.Insert(5);
-//	int datalist[10] = { 6, 3, 10, 17, 25, 35, 15, 17, 8, 29 };
-//	for (int i = 0; i < 10; i++)
-//	{
-//		InserteMax(L, datalist[i]);
-//	}
-//	for (int i = 0; i < L.ListSize(); i++)
-//	{
-//		cout << L.GetData(i) << " ";
-//	}
-//	cout << endl;
-//	system("pause");
-//}
+int main(void) {
+	SeqList L;
+	L.Insert(10);
+	L.Insert(20);
+	L.Insert(5);
+	int datalist[10] = { 6, 3, 10, 17, 25, 35, 15, 17, 8, 29 };
+	for (int i = 0; i < 10; i++)
+	{
+		InserteMax(L, datalist[i]);
+	}
+	for (int i = 0; i < L.ListSize(); i++)
+	{
+		cout << L.GetData(i) << " ";
+	}
+	cout << endl;
+	system("pause");
+}
