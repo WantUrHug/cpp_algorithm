@@ -19,7 +19,7 @@ public:
 	int PQLength(void) const;
 	int PQFull(void) const;
 };
-PQueue::PQueue(){}
+PQueue::PQueue():count(0){}
 void PQueue::PQInsert(const DataType& item)
 {
 	if (count == MaxPQSize)
@@ -28,7 +28,7 @@ void PQueue::PQInsert(const DataType& item)
 		exit(1);
 	}
 	//并不是删除最前面一个，所以和 FIFO 队列不同
-	pqlist[count];
+	pqlist[count] = item;
 	count++;
 }
 DataType PQueue::PQDelete(void)
